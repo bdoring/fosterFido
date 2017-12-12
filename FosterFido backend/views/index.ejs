@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Welcome back, <%= user.username %></h1>
+    <h2>Make a new user:</h2>
+    <form action="/company" method="post">
+      <input type="text" name="name" placeholder="Company Name">
+      <input type="text" name="description" placeholder="Company Description">
+      <input type="number" name="suite" placeholder="#">
+      <input type="submit">
+    </form>
+    <% for(var i = 0; i<companies.length; i++){ %>
+    <div>
+      <h3><a href="/company/<%= companies[i].id %>"><%= companies[i].name %></a></h3>
+      <p><%= companies[i].description %></p>
+      <p>Suite - <%= companies[i].suite %></p>
+    </div>
+    <% } %>
+  </body>
+</html>

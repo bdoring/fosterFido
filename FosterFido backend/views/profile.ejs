@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1> <%= com.name %> </h1>
+    <p> <%= com.description %></p>
+    <p> Suite #<%= com.suite %></p>
+
+    <h3>Company Members:</h3>
+    <% for(var i = 0; i<members.length; i++){ %>
+      <p> <%= members[i].first_name %> <%= members[i].last_name %> - <%= members[i].position %></p>
+    <% } %>
+
+    <form action="/member/<%= com.id %>" method="post">
+      <input type="text" name="first_name" placeholder="First Name">
+      <input type="text" name="last_name" placeholder="First Name">
+      <input type="text" name="email" placeholder="Email">
+      <input type="text" name="position" placeholder="Position">
+      <input type="submit">
+    </form>
+  </body>
+</html>
