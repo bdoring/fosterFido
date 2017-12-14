@@ -8,25 +8,53 @@ import {getFeedResults} from '../actions/feed.actions';
 
 import PetCard from './PetCard';
 
-const Feed = (props) => {
-  let petList = props.feed.map((pet, index) => <PetCard key={index} pet={pet} navigation={props.navigation}/>)
+let counter = 0;
 
-  console.log("Feed props:", props);
-  console.log("PetList:", petList);
-  if (!props.feed[0]) {
-    if (props.user.zipcode) {
-      props.getFeedResults(props.user.zipcode);
+class Feed extends React.Component {
+
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("shouldComponentUpdate:", nextProps.user.zipcode != this.props.user.zipcode);
+    if (nextProps.user.zipcode != this.props.user.zipcode) {
+      console.log("UPDATING FEED...");
+      this.props.getFeedResults(nextProps.user.zipcode)
     }
+    return true;
   }
 
-  return (<ScrollView>
-    <View>
-      <Text>
-        This is your feed, {props.user.firstName}
-      </Text>
-      {petList}
-    </View>
-  </ScrollView>)
+  // myFunc = () => {
+  //   if (!this.props.feed[0]) {
+  //     if (this.props.user.zipcode) {
+  //       this.props.getFeedResults(this.props.user.zipcode);
+  //     }
+  //   }
+  // }
+  //
+  // myFunc();
+
+
+  render() {
+    console.log("RENDERED")
+    counter = counter + 1;
+    console.log(`this.props.feed ${counter}:`, this.props.feed)
+    let petList = this.props.feed.map((pet, index) => <PetCard key={index} pet={pet} navigation={this.props.navigation}/>);
+
+    if (!this.props.feed[0]) {
+      if (this.props.user.zipcode) {
+        this.props.getFeedResults(this.props.user.zipcode);
+      }
+    }
+
+    return (
+      <ScrollView>
+        <View>
+          <Text>
+            This is your feed, {this.props.user.firstName}
+          </Text>
+          {petList}
+        </View>
+      </ScrollView>)
+  }
 }
 
 const mapStateToProps = (state, props) => {

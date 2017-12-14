@@ -5,6 +5,7 @@ export const USER_LOGIN_REJECTED = "USER_LOGIN_REJECTED";
 export const USER_REGISTER = "USER_REGISTER";
 export const USER_UPDATE = "USER_UPDATE";
 export const USER_DELETE = "USER_DELETE";
+export const USER_LOGOUT = "USER_LOGOUT";
 
 export const userLogin = (thisUser, navigation) => {
   return async (dispatch) => {
@@ -58,6 +59,16 @@ export const userDelete = (thisUser, navigation) => {
     dispatch({
       type: USER_DELETE,
       navigation: navigation
+    })
+  }
+}
+
+export const userLogout = (thisUser) => {
+  return async (dispatch) => {
+    console.log("USER LOGGING OUT...");
+
+    dispatch({
+      type: USER_LOGOUT
     })
   }
 }

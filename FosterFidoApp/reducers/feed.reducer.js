@@ -7,6 +7,7 @@ export default(state = [], action) => {
 
     case GET_FEED_RESULTS_SUCCESS:
       return [...action.payload];
+      // return state;
 
     default:
       return state;

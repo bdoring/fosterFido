@@ -12,11 +12,17 @@ export const getFeedResults = (userZipcode) => {
     // dispatch({
     //   type: GET_FEED_RESULTS_SUCCESS
     // })
-    const apiKey = "d65eb3d454e7a9215e0f7b75bf7e2098";
-    let feed = await axios.get(`https://api.petfinder.com/pet.find?format=json&key=${apiKey}&location=${userZipcode}&output=full&count=20`);
-    dispatch({
-      type: GET_FEED_RESULTS_SUCCESS,
-      payload: feed.data.petfinder.pets.pet
-    })
+
+    if (userZipcode) {
+      const apiKey = "d65eb3d454e7a9215e0f7b75bf7e2098";
+      let feed = await axios.get(`https://api.petfinder.com/pet.find?format=json&key=${apiKey}&location=${userZipcode}&output=full&count=20`);
+      console.log("FEED:", feed.data.petfinder.pets.pet);
+      dispatch({
+        type: GET_FEED_RESULTS_SUCCESS,
+        payload: feed.data.petfinder.pets.pet
+      })
+    }
+
+
   }
 }

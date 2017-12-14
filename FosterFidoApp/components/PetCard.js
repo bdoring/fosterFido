@@ -7,13 +7,13 @@ export const PHOTO_NOT_FOUND = "PHOTO_NOT_FOUND";
 const detail = (petInfo) => {
   switch (petInfo) {
     case "specialNeeds":
-      return {type: "Special Needs", iconName: "exclamation", iconType: "evilicon", iconColor: "yellow"};
+      return {type: "Special Needs", iconName: "exclamation", iconType: "evilicon", iconColor: "orange"};
     case "noDogs":
-      return {type: "No Dogs", iconName: "exclamation", iconType: "evilicon", iconColor: "yellow"};
+      return {type: "No Dogs", iconName: "exclamation", iconType: "evilicon", iconColor: "orange"};
     case "noCats":
-      return {type: "No Cats", iconName: "exclamation", iconType: "evilicon", iconColor: "yellow"};
+      return {type: "No Cats", iconName: "exclamation", iconType: "evilicon", iconColor: "orange"};
     case "noKids":
-      return {type: "No Kids", iconName: "exclamation", iconType: "evilicon", iconColor: "yellow"};
+      return {type: "No Kids", iconName: "exclamation", iconType: "evilicon", iconColor: "orange"};
     case "noClaws":
       return {type: "Declawed", iconName: "ios-checkmark", iconType: "ionicon", iconColor: "green"};
     case "hasShots":
@@ -25,7 +25,7 @@ const detail = (petInfo) => {
     case "altered":
       return {type: "Altered", iconName: "ios-checkmark", iconType: "ionicon", iconColor: "green"};
     default:
-      return {type: petInfo, iconName: "exclamation", iconType: "evilicon", iconColor: "yellow"};
+      return {type: petInfo, iconName: "exclamation", iconType: "evilicon", iconColor: "orange"};
   }
 }
 
@@ -46,7 +46,8 @@ const formatPetInfo = (petInfo) => {
 }
 
 const PetCard = ({ pet, navigation }) => {
-  console.log("This is ", pet.name["$t"]);
+
+  // console.log("This is ", pet.name["$t"]);
 
 
   let petPhoto = [];
@@ -61,7 +62,7 @@ const PetCard = ({ pet, navigation }) => {
     petPhoto = PHOTO_NOT_FOUND;
   }
 
-  console.log("PET PHOTO:", petPhoto)
+  // console.log("PET PHOTO:", petPhoto)
 
   let petInformation;
   if (pet.options.option) {
@@ -90,7 +91,7 @@ const PetCard = ({ pet, navigation }) => {
       }}
       source={petPhoto === PHOTO_NOT_FOUND ? require('./images/photoNotFound.png') : { uri: petPhoto }}
     />
-    <View style={{ flexDirection: "row", flexWrap: "wrap", height: 100, justifyContent:"space-between" }}>
+    <View style={{  flexWrap: "wrap", height: 100, justifyContent:"space-between" }}>
       {petInformation}
     </View>
 

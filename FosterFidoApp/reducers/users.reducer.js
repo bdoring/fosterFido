@@ -3,7 +3,8 @@ import {
   USER_LOGIN_SUCCESS,
   USER_REGISTER,
   USER_UPDATE,
-  USER_DELETE
+  USER_DELETE,
+  USER_LOGOUT
 } from '../actions/users.actions';
 
 
@@ -26,6 +27,9 @@ export default (state = {}, action) => {
 
     case USER_DELETE:
       action.navigation.navigate("Login");
+      return {};
+
+    case USER_LOGOUT:
       return {};
 
     default:

@@ -10,11 +10,15 @@ import {
   Button
 } from 'react-native-elements';
 
+import { connect } from 'react-redux';
+import { userLogout } from '../actions/users.actions';
+import { bindActionCreators } from 'redux';
+
 const MainTab = TabNavigator({
   Feed: {
     screen: Feed,
     navigationOptions: {
-      headerTitle: 'Feed'
+      headerTitle: 'Feed',
     }
   },
   Profile: {
@@ -29,8 +33,14 @@ const RootNavigator = StackNavigator({
   Login: {
     screen: Login,
     navigationOptions: {
-      headerTitle: 'Login',
-      headerLeft: null
+      // headerTitle: 'Login',
+      headerLeft: null,
+      headerTintColor: '#555555',
+      headerStyle: {
+        backgroundColor: '#84c7e8',
+        borderBottomWidth: 0,
+        // backgroundColor: '#D9E3F0',
+      }
     }
   },
   MainTab: {
