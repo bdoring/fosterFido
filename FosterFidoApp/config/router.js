@@ -5,6 +5,7 @@ import Login from '../components/Login';
 import Feed from '../components/Feed';
 import Profile from '../components/Profile';
 import Register from '../components/Register';
+import PetDetail from '../components/PetDetail';
 import {
   Button
 } from 'react-native-elements';
@@ -48,6 +49,12 @@ const RootNavigator = StackNavigator({
     screen: Register,
     navigationOptions: {
       headerTitle: 'Register'
+    }
+  },
+  PetDetail: {
+    screen: PetDetail,
+    navigationOptions: {
+      headerTitle: 'Pet Detail'
     }
   }
 })

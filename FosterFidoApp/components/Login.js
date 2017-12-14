@@ -17,8 +17,8 @@ import { bindActionCreators } from 'redux';
 
 class Login extends React.Component {
   state = {
-    email: "",
-    password: ""
+    email: "B@bs.com",
+    password: "123"
   }
 
   render() {

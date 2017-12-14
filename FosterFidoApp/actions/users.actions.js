@@ -9,7 +9,9 @@ export const USER_DELETE = "USER_DELETE";
 export const userLogin = (thisUser, navigation) => {
   return async (dispatch) => {
     console.log("userLogin - thisUser:", thisUser);
+    console.log("USER SERVER RESPONSE:", user);
     let user = await axios.post("http://10.2.81.43:8000/users/login", thisUser);
+    console.log("USER SERVER RESPONSE:", user);
 
     if (user.data === "Account Not Found") {
       dispatch({
