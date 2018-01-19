@@ -1,12 +1,13 @@
 import React from 'react';
 import {
-  View,
-  Text
+  View
 } from 'react-native';
 import {
   FormLabel,
   FormInput,
-  Button
+  Button,
+  Icon,
+  Text
 } from 'react-native-elements';
 
 import { connect } from 'react-redux';
@@ -25,29 +26,56 @@ class Profile extends React.Component {
   render() {
     console.log("Profile props:", this.props)
     return (
-      <View>
-        <FormLabel>First Name</FormLabel>
+      <View style={{ backgroundColor: '#bbdefb', flex: 1}}>
+        <View style={{display: 'flex', justifyContent: 'center', height: 150, flexDirection: 'column', backgroundColor: "white"}}>
+          <Icon
+            name='ios-person'
+            type='ionicon'
+            size={50}
+            color='#84c7e8'
+            />
+            <Text h4 style={{ fontFamily: 'Futura', textAlign: 'center', color: '#555555'}}>
+              Your Account Details
+            </Text>
+        </View>
+
+        <FormLabel
+          labelStyle={{color: '#555555'}}
+          >First Name</FormLabel>
         <FormInput
+          inputStyle={{color: '#555555'}}
+          containerStyle={{borderBottomColor: '#697689', width: 300}}
           onChangeText={(fName) => this.setState({ firstName: fName })}
           value={this.state.firstName}/>
-        <FormLabel>Last Name</FormLabel>
+        <FormLabel labelStyle={{color: '#555555'}}>Last Name</FormLabel>
         <FormInput
+          inputStyle={{color: '#555555'}}
+          containerStyle={{borderBottomColor: '#697689', width: 300}}
           onChangeText={(lName) => this.setState({ lastName: lName })}
           value={this.state.lastName}/>
-        <FormLabel>Zipcode</FormLabel>
+        <FormLabel labelStyle={{color: '#555555'}}>Zipcode</FormLabel>
         <FormInput
+          inputStyle={{color: '#555555'}}
+          containerStyle={{borderBottomColor: '#697689', width: 300}}
           onChangeText={(zipcode) => this.setState({ zipcode: zipcode })}
           value={this.state.zipcode}/>
-        <FormLabel>Email Address</FormLabel>
+        <FormLabel labelStyle={{color: '#555555'}}>Email Address</FormLabel>
         <FormInput
+          inputStyle={{color: '#555555'}}
+          containerStyle={{borderBottomColor: '#697689', width: 300}}
           onChangeText={(email) => this.setState({ email: email })}
           value={this.state.email}/>
         <Button
+          raised
           title='Update Profile'
+          backgroundColor="#4CAF50"
+          containerViewStyle={{margin: 10}}
           onPress={() => this.props.userUpdate(this.state, this.props.navigation)}
         />
         <Button
+          raised
           title='Delete Profile'
+          backgroundColor="#F47373"
           onPress={() => this.props.userDelete(this.state.id, this.props.navigation)}
         />
       </View>

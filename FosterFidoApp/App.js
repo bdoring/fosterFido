@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   Platform,
@@ -79,23 +73,3 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-
-{/* <View style={styles.container}>
-  <FormLabel>username</FormLabel>
-  <FormInput
-    onChangeText={(username) => this.setState({ username: username})}
-    value={this.state.username}/>
-  <FormLabel>password</FormLabel>
-  <FormInput
-    onChangeText={(password) => this.setState({ password: password})}
-
-  value={this.state.password}
-/>
-  <Button
-    title='Register'
-    onPress={this.register}/>
-    <Button
-      title='Login'
-      onPress={this.login}/>
-    <Text>{this.state.username}</Text>
-</View> */}

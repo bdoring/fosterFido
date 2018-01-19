@@ -7,7 +7,8 @@ import Profile from '../components/Profile';
 import Register from '../components/Register';
 import PetDetail from '../components/PetDetail';
 import {
-  Button
+  Button,
+  Icon
 } from 'react-native-elements';
 
 import { connect } from 'react-redux';
@@ -19,12 +20,32 @@ const MainTab = TabNavigator({
     screen: Feed,
     navigationOptions: {
       headerTitle: 'Feed',
+      headerTintColor: '#555555',
+      headerStyle: {
+        backgroundColor: '#D9E3F0'
+      },
+      tabBarIcon: ({ tintColor }) => (<Icon
+          name='feed'
+          type='font-awesome'
+          size={25}
+          color={ tintColor }
+        />)
     }
   },
   Profile: {
     screen: Profile,
     navigationOptions: {
-      headerTitle: 'Profile'
+      headerTitle: 'Profile',
+      headerTintColor: '#555555',
+      headerStyle: {
+        backgroundColor: '#D9E3F0'
+      },
+      tabBarIcon: ({ tintColor }) => (<Icon
+          name='ios-person'
+          type='ionicon'
+          size={25}
+          color={ tintColor }
+        />)
     }
   }
 })
@@ -33,13 +54,11 @@ const RootNavigator = StackNavigator({
   Login: {
     screen: Login,
     navigationOptions: {
-      // headerTitle: 'Login',
       headerLeft: null,
       headerTintColor: '#555555',
       headerStyle: {
-        backgroundColor: '#84c7e8',
+        backgroundColor: '#C4DEF6',
         borderBottomWidth: 0,
-        // backgroundColor: '#D9E3F0',
       }
     }
   },
@@ -64,7 +83,11 @@ const RootNavigator = StackNavigator({
   PetDetail: {
     screen: PetDetail,
     navigationOptions: {
-      headerTitle: 'Pet Detail'
+      headerTitle: 'Pet Detail',
+      headerTintColor: '#555555',
+      headerStyle: {
+        backgroundColor: '#D9E3F0'
+      }
     }
   }
 })

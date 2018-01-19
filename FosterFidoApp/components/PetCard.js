@@ -40,20 +40,27 @@ const formatPetInfo = (petInfo) => {
           type={petInfo.iconType}
           color={petInfo.iconColor}
           />
-          <Text >{petInfo.type}</Text>
+          <Text style={{fontFamily: 'Farah'}}> {petInfo.type}</Text>
     </View>
   )
 }
 
+const noPetInfo =
+    (<View style={{ flexDirection: "row", flex: 1, alignItems: 'center',justifyContent: 'center' }}>
+        <Icon
+          name="plus"
+          type="foundation"
+          color="green"
+          />
+          <Text style={{fontFamily: 'Farah'}}> See details</Text>
+    </View>)
+
+
 const PetCard = ({ pet, navigation }) => {
-
-  // console.log("This is ", pet.name["$t"]);
-
 
   let petPhoto = [];
   if (pet.media.photos) {
     petPhoto = pet.media.photos.photo.filter(photo => photo["@size"]==="x");
-
   }
 
   if (petPhoto[0]) {
@@ -61,8 +68,6 @@ const PetCard = ({ pet, navigation }) => {
   } else {
     petPhoto = PHOTO_NOT_FOUND;
   }
-
-  // console.log("PET PHOTO:", petPhoto)
 
   let petInformation;
   if (pet.options.option) {
@@ -77,10 +82,10 @@ const PetCard = ({ pet, navigation }) => {
     }
   }
 
-
   return (
     <Card
     title={pet.name["$t"]}
+    titleStyle={{fontFamily: 'Futura', fontSize: 20}}
     >
     <Image
       borderRadius={10}
@@ -92,11 +97,13 @@ const PetCard = ({ pet, navigation }) => {
       source={petPhoto === PHOTO_NOT_FOUND ? require('./images/photoNotFound.png') : { uri: petPhoto }}
     />
     <View style={{  flexWrap: "wrap", height: 100, justifyContent:"space-between" }}>
-      {petInformation}
+      {petInformation ? petInformation : noPetInfo}
     </View>
 
     <Button
+      raised
       backgroundColor='#03A9F4'
+      fontFamily='Futura'
       buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
       title='VIEW NOW'
       onPress={()=> navigation.navigate('PetDetail', pet) }
@@ -106,18 +113,3 @@ const PetCard = ({ pet, navigation }) => {
 }
 
 export default PetCard;
-
-{/* <Text style={{marginBottom: 10}}>
-  {petInformation}
-</Text> */}
-
-{/* <View style={{ flexDirection: "row", flex: 1, alignItems: 'center',justifyContent: 'flex-start' }}>
-                    <Icon
-                      name='ios-checkmark'
-                      type='ionicon'
-                      // color='#517fa4'
-                      color="green"
-                      />
-                      <Text >{pet.options.option["$t"]}</Text>
-
-                </View> */}

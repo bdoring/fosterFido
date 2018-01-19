@@ -10,8 +10,7 @@ require('./config/session.js')(app);
 
 app.set('view engine', 'ejs');
 
-
-var routes_setter = require('./config/routes.js');
+let routes_setter = require('./config/routes.js');
 routes_setter(app);
 
 app.listen(port, function() {

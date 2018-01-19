@@ -16,7 +16,6 @@ const getPetSize = (petSize) => {
 
     default:
       return "Default";
-
   }
 }
 
@@ -68,34 +67,35 @@ const PetDetail = (props) => {
   }
 
 
-  let petDescription = description["$t"] ? `About ${name["$t"]}: ${description["$t"]}` : `Please reach out directly to the rescue for more information on ${name["$t"]}.`
+  let petDescription = description["$t"] ? `${description["$t"]}` : `Please reach out directly to the rescue for more information on ${name["$t"]}.`
 
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: '#bbdefb', flex: 1}}>
+      <View style={{display: 'flex', justifyContent: 'center', height: 150, flexDirection: 'column', backgroundColor: "white"}}>
+        <Icon
+          name='heart'
+          type='foundation'
+          size={50}
+          color='#84c7e8'
+          />
+          <Text h4 style={{ fontFamily: 'Futura', textAlign: 'center', color: '#555555'}}>
+            {`Meet ${name["$t"]}`}
+          </Text>
+      </View>
       <View>
-        <Image
-          // borderRadius={10}
-          style={{
-            width: 400,
-            height: 350,
-            resizeMode: "stretch",
-          }}
-          source={petPhoto === PHOTO_NOT_FOUND ? require('./images/photoNotFound.png') : { uri: petPhoto }} />
-        {/* <Tile
-          imageSrc={{}}
-          title={`${name["$t"]} - ${contact.city["$t"]}, ${contact.zip["$t"]}`}
-          contentContainerStyle={{height: 1000}}
-        > */}
-          <Divider style={{ backgroundColor: "#3399ff" }} />
-          <Text h4>{`${name["$t"]} - ${contact.city["$t"]}, ${contact.zip["$t"]}`}</Text>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
-            <View style={{flexDirection: 'row',  flex: 1, alignItems: 'center',justifyContent: 'center' }}>
+        <View style={{margin: 5}}>
+          <Text h4
+            style={{textAlign: 'center', color:'#555555', fontFamily: 'Futura'}}>
+            {`${name["$t"]} - ${contact.city["$t"]}, ${contact.zip["$t"]}`}
+          </Text>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 5}}>
+            <View style={{flexDirection: 'row',  flex: 1, alignItems: 'center',justifyContent: 'center'}}>
               <Icon
                 name="paw"
                 type="foundation"
                 color="#3399ff"
               />
-              <Text> {gender}</Text>
+              <Text style={{color: '#555555', fontFamily: 'Futura'}}> {gender}</Text>
             </View>
 
             <View style={{flexDirection: 'row',  flex: 1, alignItems: 'center',justifyContent: 'center' }}>
@@ -104,16 +104,16 @@ const PetDetail = (props) => {
                 type="foundation"
                 color="#3399ff"
               />
-              <Text> {age["$t"].toLowerCase() === "baby" ? "Puppy" : age["$t"]}</Text>
+              <Text style={{color: '#555555', fontFamily: 'Futura'}}> {age["$t"].toLowerCase() === "baby" ? "Puppy" : age["$t"]}</Text>
             </View>
 
-            <View style={{flexDirection: 'row',  flex: 1, alignItems: 'center',justifyContent: 'center' }}>
+            <View style={{flexDirection: 'row',  flex: 1, alignItems: 'center',justifyContent: 'center'}}>
               <Icon
                 name="paw"
                 type="foundation"
                 color="#3399ff"
               />
-              <Text> {petSize}</Text>
+              <Text style={{color: '#555555', fontFamily: 'Futura'}}> {petSize}</Text>
             </View>
           </View>
           {contact.phone["$t"] && <TouchableOpacity onPress={() => callRescue(contact.phone["$t"])}>
@@ -124,7 +124,7 @@ const PetDetail = (props) => {
                   type="material"
                   color="#3399ff"
                 />
-                <Text> {contact.phone["$t"]}</Text>
+                <Text style={{color: '#555555', fontFamily: 'Futura'}}> {contact.phone["$t"]}</Text>
               </View>
             </View>
           </TouchableOpacity>}
@@ -136,24 +136,29 @@ const PetDetail = (props) => {
                   type="material"
                   color="#3399ff"
                 />
-                <Text> {contact.email["$t"]}</Text>
+                <Text style={{color: '#555555', fontFamily: 'Futura'}}> {contact.email["$t"]}</Text>
               </View>
             </View>
           </TouchableOpacity>}
-          <Divider style={{ backgroundColor: "#3399ff" }} />
+        </View>
+        <Image
+          // borderRadius={10}
+          style={{
+            width: 400,
+            height: 350,
+            resizeMode: "stretch"
+          }}
+          source={petPhoto === PHOTO_NOT_FOUND ? require('./images/photoNotFound.png') : { uri: petPhoto }} />
+
           <View>
-            <Text>
+            <Text style={{textAlign:'center', fontFamily: 'Futura', fontSize: 17, color: '#555555', marginTop: 5}}>{`About ${name["$t"]}:`}</Text>
+            <Text style={{fontFamily: 'Futura', fontSize: 15, padding: 15, color: '#555555'}}>
               {petDescription}
             </Text>
           </View>
-        {/* </Tile> */}
       </View>
     </ScrollView>
   )
 }
 
 export default PetDetail;
-//
-// <View>
-//   <Text>This is the Pet Detail Page for {name["$t"]}</Text>
-// </View>

@@ -14,5 +14,4 @@ const myApp = () => {
   )
 }
 
-// AppRegistry.registerComponent('FosterFidoApp', () => App);
 AppRegistry.registerComponent('FosterFidoApp', () => myApp);

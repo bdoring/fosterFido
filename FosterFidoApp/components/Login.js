@@ -21,8 +21,8 @@ import { bindActionCreators } from 'redux';
 
 class Login extends React.Component {
   state = {
-    email: "",
-    password: ""
+    email: "B@bs.com",
+    password: "123"
   }
 
 
@@ -63,6 +63,7 @@ class Login extends React.Component {
             inputStyle={{color: '#555555'}}
             containerStyle={{borderBottomColor: '#697689', width: 300}}
             placeholder="Password"
+            secureTextEntry={true}
             onChangeText={(password) => this.setState({ password: password})}
           value={this.state.password}
           />
@@ -76,12 +77,12 @@ class Login extends React.Component {
         </FormValidationMessage>}
         <Button
           raised
-          backgroundColor="#37D67A"
+          backgroundColor="#4CAF50"
           title='Login'
           onPress={()=> this.props.userLogin(this.state, this.props.navigation)}
         />
         <Divider
-          style={{ margin: 20, backgroundColor: '#D9E3F0'}} />
+          style={{ margin: 20, backgroundColor: 'white'}} />
         <Text style={{ marginBottom: 10, color: "#697689", justifyContent: 'center', textAlign: 'center', flexDirection: 'row'}}>Don't have an account?</Text>
         <View style={{flexDirection: 'row', justifyContent:'center'}}>
           <Button
@@ -101,12 +102,7 @@ class Login extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // backgroundColor: '#F5FCFF',
-    // backgroundColor: '#27B6B6',
-    // backgroundColor: '#24A5E3',
-    backgroundColor: '#84C7E8',
+    backgroundColor: '#C4DEF6',
   },
   welcome: {
     fontSize: 20,

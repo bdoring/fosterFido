@@ -11,7 +11,7 @@ export const userLogin = (thisUser, navigation) => {
   return async (dispatch) => {
     console.log("userLogin - thisUser:", thisUser);
     console.log("USER SERVER RESPONSE:", user);
-    let user = await axios.post("http://10.2.81.43:8000/users/login", thisUser);
+    let user = await axios.post("http://localhost:8000/users/login", thisUser);
     console.log("USER SERVER RESPONSE:", user);
 
     if (user.data === "Account Not Found") {
@@ -30,7 +30,7 @@ export const userLogin = (thisUser, navigation) => {
 
 export const userRegister = (thisUser, navigation) => {
   return async (dispatch) => {
-    let user = await axios.post("http://10.2.81.43:8000/users/register", thisUser);
+    let user = await axios.post("http://localhost:8000/users/register", thisUser);
     dispatch({
       type: USER_REGISTER,
       payload: user.data,
@@ -41,7 +41,7 @@ export const userRegister = (thisUser, navigation) => {
 
 export const userUpdate = (thisUser, navigation) => {
   return async (dispatch) => {
-    let user = await axios.patch("http://10.2.81.43:8000/users/update", thisUser);
+    let user = await axios.patch("http://localhost:8000/users/update", thisUser);
 
     dispatch({
       type: USER_UPDATE,
@@ -54,7 +54,7 @@ export const userUpdate = (thisUser, navigation) => {
 export const userDelete = (thisUser, navigation) => {
   return async (dispatch) => {
     console.log("USER DELETE:", thisUser)
-    let user = await axios.delete(`http://10.2.81.43:8000/users/delete/${thisUser}`);
+    let user = await axios.delete(`http://localhost:8000/users/delete/${thisUser}`);
 
     dispatch({
       type: USER_DELETE,
